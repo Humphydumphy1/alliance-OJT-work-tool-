@@ -1,0 +1,81 @@
+    :root {
+      --primary: #007acc;
+      --primary-dark: #005f99;
+      --bg-light: #f1f3f5;
+      --text-dark: #222;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: var(--primary);
+      color: white;
+      padding: 15px 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 24px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }

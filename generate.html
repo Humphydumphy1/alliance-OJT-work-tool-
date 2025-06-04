@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New FRECNO Generator</title>
+  <link rel="stylesheet" href="css/generate.css" />
+</head>
+<body>
+  <header>New FRECNO Generator</header>
+  <label for="startFrecno">Latest FRECNO (start point):</label>
+  <input type="number" id="startFrecno" placeholder="e.g. 122000" aria-label="Enter starting FRECNO">
+  <label for="oldFrecnos">Paste old FRECNO values (one per line):</label>
+  <textarea id="oldFrecnos" placeholder="e.g.&#10;193742&#10;193743&#10;193744" aria-label="Paste old FRECNOs here"></textarea>
+  <div class="button-group" role="group" aria-label="Form controls">
+    <button onclick="generateFrecnos()" aria-label="Generate FRECNO SQL block">Generate</button>
+    <button class="clear" onclick="clearForm()" aria-label="Clear form and output">Clear</button>
+    <button class="copy" onclick="copyGeneratedFrecnos()" aria-label="Copy output to clipboard">Copy to Clipboard</button>
+    <button class="toggle" onclick="toggleGeneratedOutput()" aria-pressed="false" aria-label="Toggle output visibility">Show/Hide Output</button>
+  </div>
+  <pre id="generateOutput" aria-live="polite" aria-atomic="true">/* Generated FRECNOs will appear here */</pre>
+  <script src="js/generate.js"></script>
+</body>
+</html>

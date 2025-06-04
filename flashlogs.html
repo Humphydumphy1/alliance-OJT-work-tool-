@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashlogs Batch Generator</title>
+  <link rel="stylesheet" href="css/flashlogs.css" />
+</head>
+<body>
+  <header>
+    Flashlogs Batch Generator
+  </header>
+  <main>
+    <h2>Generate Flashlogs Batch Files (by Bazel)</h2>
+    <p>This utility generates batch scripts for collecting flashlogs and iPortfolio files from the client’s POS.<br><br>
+      📁 After running the `.bat` file, check <code>C:\poscopy</code> for collected logs.</p>
+    <button onclick="generateBTQ()">📥 Download Flashlogs_BTQ.bat</button>
+    <button onclick="generateFB()">📥 Download Flashlogs_FB.bat</button>
+  </main>
+  <script src="js/flashlogs.js"></script>
+</body>
+</html>

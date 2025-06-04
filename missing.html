@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Missing Receipt Finder</title>
+  <link rel="stylesheet" href="css/missing.css" />
+</head>
+<body>
+  <main>
+    <h1>Missing Receipt [#OR] Finder</h1>
+    <section class="container" role="main" aria-label="Missing Receipt Finder">
+      <div class="file-upload" id="dropArea">
+        <input type="file" id="fileInput" accept=".xls,.xlsx,.ods,.csv" multiple aria-label="Upload receipt files" />
+        <p>Drag and drop files here or click to choose</p>
+      </div>
+
+      <div class="buttons">
+        <button id="checkBtn">Check Missing</button>
+        <button id="downloadBtn" style="display:none;">Download Result</button>
+        <button id="clearBtn">Clear Output</button>
+      </div>
+
+      <pre id="output" class="output-box" aria-live="polite"></pre>
+
+      <div id="sqlControls" style="display:none;">
+        <button id="showSQLBtn">Show SQL</button>
+        <button id="copyBtn">Copy SQL</button>
+        <button id="selectSQLBtn">Generate SELECT Query</button>
+        <button id="deleteSQLBtn">Generate DELETE Query</button>
+      </div>
+
+      <pre id="sqlOutput" class="output-box" style="display:none;"></pre>
+    </section>
+  </main>
+
+  <!-- External Library (must come first) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <!-- Your JS File (comes after the library) -->
+  <script src="js/missing.js"></script>
+</body>
+</html>

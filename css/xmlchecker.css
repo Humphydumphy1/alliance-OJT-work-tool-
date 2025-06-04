@@ -1,0 +1,133 @@
+    :root {
+      --primary: #007bff;
+      --primary-hover: #0056b3;
+      --secondary: #6c757d;
+      --secondary-hover: #5a6268;
+      --success: #28a745;
+      --error: #dc3545;
+      --neutral: #f8f9fa;
+      --text: #212529;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--neutral);
+      color: var(--text);
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.65rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+    }
+
+    #dropZone {
+      border: 2px dashed #aaa;
+      background-color: white;
+      padding: 1.5rem;
+      text-align: center;
+      color: #666;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    #dropZone.dragover {
+      background-color: #e0f7ff;
+      border-color: var(--primary);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    button.secondary {
+      background-color: var(--secondary);
+    }
+
+    button.secondary:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    #progress {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .output {
+      display: none;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 1rem;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+
+    .output.success {
+      border-left: 5px solid var(--success);
+    }
+
+    .output.error {
+      border-left: 5px solid var(--error);
+    }
+
+    .file-status {
+      margin-bottom: 0.3rem;
+    }
+
+    .file-status.success {
+      color: var(--success);
+    }
+
+    .file-status.error {
+      color: var(--error);
+    }

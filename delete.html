@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FRECNO DELETE Generator</title>
+  <link rel="stylesheet" href="css/delete.css" />
+</head>
+<body>
+  <header>FRECNO DELETE Generator</header>
+  <label for="deleteRecnos">
+    Input FRECNO values to keep (one per line):
+  </label>
+  <textarea id="deleteRecnos" placeholder="e.g.&#10;122086&#10;122088" aria-label="Input FRECNO values to keep"></textarea>
+  <div class="button-group" role="group" aria-label="Form controls">
+    <button onclick="generateDeleteSQL()" aria-label="Generate DELETE SQL statement">Generate DELETE SQL</button>
+    <button class="clear" onclick="clearDeleteForm()" aria-label="Clear all inputs and output">Clear</button>
+    <button class="copy" onclick="copyToClipboard()" aria-label="Copy SQL output to clipboard">Copy to Clipboard</button>
+    <button class="toggle" onclick="toggleOutput()" aria-pressed="false" aria-label="Show or hide SQL output">Show/Hide Output</button>
+  </div>
+  <pre id="deleteOutput" aria-live="polite" aria-atomic="true">/* Output will appear here after generation */</pre>
+  <script src="js/delete.js"></script>
+</body>
+</html>

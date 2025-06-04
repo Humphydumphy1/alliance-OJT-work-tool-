@@ -1,0 +1,172 @@
+    @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+    :root {
+      --primary-color: #5c6bc0;     /* blue-purple */
+      --accent-color: #1e1e2f;      /* dark background */
+      --light-text: #f8f8f8;        /* near white */
+      --border-color: #44475a;
+      --highlight: #282a36;
+      --btn-hover: #3f51b5;
+      --btn-clear: #ff4d4d;
+      --btn-clear-hover: #cc0000;
+      --btn-copy: #4caf50;
+      --btn-copy-hover: #388e3c;
+      --btn-toggle: #ffa500;
+      --btn-toggle-hover: #cc8400;
+      --font-family: 'Rubik', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      margin: 0 auto;
+      max-width: 900px;
+      background-color: var(--accent-color);
+      color: var(--light-text);
+      padding: 20px 24px;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 18px 24px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      text-align: center;
+      user-select: text;
+      border-radius: 8px;
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      user-select: text;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      background-color: var(--highlight);
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      color: var(--light-text);
+      resize: vertical;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+      user-select: text;
+      margin-bottom: 16px;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background-color: #3b3c5a;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+      user-select: none;
+    }
+
+    button {
+      flex: 1 1 140px;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.12s ease;
+      box-shadow: 0 3px 8px rgba(92,107,192,0.5);
+      user-select: none;
+      text-align: center;
+    }
+
+    button:hover {
+      background-color: var(--btn-hover);
+      box-shadow: 0 6px 14px rgba(63,81,181,0.8);
+      transform: scale(1.04);
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    button.clear {
+      background-color: var(--btn-clear);
+      box-shadow: 0 3px 8px rgba(255,77,77,0.6);
+    }
+
+    button.clear:hover {
+      background-color: var(--btn-clear-hover);
+      box-shadow: 0 6px 14px rgba(204,0,0,0.8);
+    }
+
+    button.copy {
+      background-color: var(--btn-copy);
+      box-shadow: 0 3px 8px rgba(76,175,80,0.6);
+    }
+
+    button.copy:hover {
+      background-color: var(--btn-copy-hover);
+      box-shadow: 0 6px 14px rgba(56,142,60,0.8);
+    }
+
+    button.toggle {
+      background-color: var(--btn-toggle);
+      box-shadow: 0 3px 8px rgba(255,165,0,0.6);
+      flex: 1 1 120px;
+    }
+
+    button.toggle:hover {
+      background-color: var(--btn-toggle-hover);
+      box-shadow: 0 6px 14px rgba(204,132,0,0.8);
+    }
+
+    pre#deleteOutput {
+      background-color: var(--highlight);
+      border-left: 6px solid var(--primary-color);
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--light-text);
+      max-height: 320px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.5);
+      display: none;
+      user-select: text;
+    }
+
+    @media (max-width: 600px) {
+      .button-group {
+        flex-direction: column;
+      }
+      button {
+        flex: 1 1 100%;
+      }
+    }
