@@ -1,146 +1,177 @@
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Rubik', sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background, #1a1a2e);
-      color: var(--text-color, #eaeaea);
-      margin: 0;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
+body {
+  font-family: 'Rubik', sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background, #1a1a2e);
+  color: var(--text-color, #eaeaea);
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
 
-    :root {
-      --primary: #5a5af4;
-      --secondary: #252547;
-      --accent: #f0f4f8;
-      --danger: #e04f5f;
-      --success: #45b26b;
-      --warning: #f5a623;
-      --purple: #a156f9;
-      --shadow-light: rgba(90, 90, 244, 0.3);
-      --shadow-dark: rgba(0, 0, 0, 0.4);
-    }
+:root {
+  --primary: #5a5af4;
+  --secondary: #252547;
+  --accent: #f0f4f8;
+  --danger: #e04f5f;
+  --success: #45b26b;
+  --warning: #f5a623;
+  --purple: #a156f9;
+  --shadow-light: rgba(90, 90, 244, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+}
 
-    h1 {
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 30px;
-      color: var(--primary);
-      text-align: center;
-      user-select: none;
-      letter-spacing: 1.2px;
-    }
+h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--primary);
+  text-align: center;
+  user-select: none;
+  letter-spacing: 1.2px;
+}
 
-    .container {
-      background-color: var(--secondary);
-      border-radius: 16px;
-      padding: 32px 40px;
-      max-width: 900px;
-      width: 100%;
-      box-shadow: 0 4px 14px var(--shadow-light), inset 0 0 30px var(--shadow-dark);
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+.container {
+  background-color: var(--secondary);
+  border-radius: 16px;
+  padding: 32px 40px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 14px var(--shadow-light), inset 0 0 30px var(--shadow-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-    .file-upload {
-      border: 2px dashed var(--primary);
-      border-radius: 12px;
-      padding: 24px;
-      text-align: center;
-      transition: background-color 0.3s ease;
-      position: relative;
-    }
+.file-upload {
+  border: 2px dashed var(--primary);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
 
-    .file-upload.dragover {
-      background-color: rgba(90, 90, 244, 0.1);
-    }
+.file-upload.dragover {
+  background-color: rgba(90, 90, 244, 0.1);
+}
 
-    .file-upload input[type="file"] {
-      width: 100%;
-      padding: 14px 18px;
-      font-size: 1.05rem;
-      border-radius: 10px;
-      border: none;
-      background: var(--background);
-      color: var(--accent);
-      box-shadow: 0 3px 12px var(--shadow-light);
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
-    }
+.file-upload input[type="file"] {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: none;
+  background: var(--background);
+  color: var(--accent);
+  box-shadow: 0 3px 12px var(--shadow-light);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
 
-    .file-upload input[type="file"]:hover {
-      box-shadow: 0 5px 20px var(--shadow-light);
-    }
+.file-upload input[type="file"]:hover {
+  box-shadow: 0 5px 20px var(--shadow-light);
+}
 
-    .buttons, #sqlControls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
+.buttons, #sqlControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
 
-    button {
-      background-color: var(--primary);
-      border: none;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 6px 18px var(--shadow-light);
-      transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
+button {
+  background-color: var(--primary);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 18px var(--shadow-light);
+  transition: background-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
 
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px var(--shadow-light);
-      opacity: 0.9;
-    }
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px var(--shadow-light);
+  opacity: 0.9;
+}
 
-    #checkBtn { background-color: var(--primary); }
-    #clearBtn { background-color: var(--danger); }
-    #downloadBtn { background-color: var(--warning); }
-    #copyBtn { background-color: var(--success); }
-    #showSQLBtn { background-color: var(--purple); }
-    #selectSQLBtn { background-color: #375abf; }
-    #deleteSQLBtn { background-color: #b3322a; }
+#checkBtn { background-color: var(--primary); }
+#clearBtn { background-color: var(--danger); }
+#downloadBtn { background-color: var(--warning); }
+#copyBtn { background-color: var(--success); }
+#showSQLBtn { background-color: var(--purple); }
+#selectSQLBtn { background-color: #375abf; }
+#deleteSQLBtn { background-color: #b3322a; }
 
-    .output-box {
-      background-color: var(--background);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      padding: 24px;
-      font-size: 1.05rem;
-      color: var(--accent);
-      white-space: pre-wrap;
-      max-height: 500px;
-      overflow-y: auto;
-      box-shadow: inset 0 0 12px var(--shadow-dark);
-      user-select: text;
-      transition: background-color 0.3s ease;
-    }
+.output-box {
+  background-color: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 24px;
+  font-size: 1.05rem;
+  color: var(--accent);
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 12px var(--shadow-dark);
+  user-select: text;
+  transition: background-color 0.3s ease;
+  font-family: monospace, monospace;
+  position: relative;
+}
 
-    .output-box:empty {
-      min-height: 80px;
-    }
+.output-box:empty {
+  min-height: 80px;
+}
 
-    @media (max-width: 600px) {
-      body { padding: 20px 15px; }
-      .container { padding: 24px 20px; }
-      button {
-        flex-grow: 1;
-        text-align: center;
-      }
-      .buttons, #sqlControls {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
+/* Highlighting duplicates visually */
+
+.output-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--danger);
+  border-radius: 4px 0 0 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.output-box.duplicates-visible::before {
+  opacity: 1;
+}
+
+.output-box .duplicates {
+  color: var(--danger);
+  font-weight: 700;
+  margin-top: 1em;
+  border-left: 3px solid var(--danger);
+  padding-left: 10px;
+  user-select: text;
+}
+
+@media (max-width: 600px) {
+  body { padding: 20px 15px; }
+  .container { padding: 24px 20px; }
+  button {
+    flex-grow: 1;
+    text-align: center;
+  }
+  .buttons, #sqlControls {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

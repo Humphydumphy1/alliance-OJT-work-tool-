@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let lastMissingArray = [];
+  let lastDuplicateArray = [];
 
   function processFiles() {
     const files = document.getElementById("fileInput").files;
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sqlControls.style.display = "none";
 
     let allMissing = {};
+    let allDuplicates = {};
     let processedCount = 0;
 
     for (let file of files) {
@@ -69,13 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!date || !receipt || isNaN(Number(receipt))) continue;
 
           if (!groupedByDate[date]) groupedByDate[date] = [];
-          groupedByDate[date].push(receipt);
+          groupedByDate[date].push(Number(receipt));
         }
 
         for (let date in groupedByDate) {
-          const receipts = groupedByDate[date].map(r => Number(r)).sort((a, b) => a - b);
+          const receipts = groupedByDate[date].sort((a, b) => a - b);
+
           let missing = [];
 
+          // Detect missing
           for (let i = 1; i < receipts.length; i++) {
             const prev = receipts[i - 1];
             const curr = receipts[i];
@@ -84,8 +88,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
 
+          // Detect duplicates with a Set to get unique duplicates only
+          let seen = new Set();
+          let duplicatesSet = new Set();
+
+          for (let r of receipts) {
+            if (seen.has(r)) {
+              duplicatesSet.add(r);
+            } else {
+              seen.add(r);
+            }
+          }
+
+          const duplicates = Array.from(duplicatesSet);
+
           if (!allMissing[date]) allMissing[date] = [];
+          if (!allDuplicates[date]) allDuplicates[date] = [];
+
           allMissing[date] = allMissing[date].concat(missing);
+          allDuplicates[date] = allDuplicates[date].concat(duplicates);
         }
 
         processedCount++;
@@ -96,25 +117,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function finalizeOutput() {
-      let message = `MISSING RECEIPT NUMBERS BY DATE\n\n`;
+      let message = `RECEIPT NUMBER ANALYSIS BY DATE\n\n`;
       let allMissingFlat = [];
+      let allDuplicatesFlat = [];
 
       for (let date in allMissing) {
-        const list = allMissing[date];
-        if (list.length) {
-          message += `${date}:\n${list.join(", ")}\n\n`;
-          allMissingFlat.push(...list);
+        const missingList = allMissing[date];
+        const duplicateList = allDuplicates[date];
+
+        if (missingList.length || duplicateList.length) {
+          message += `${date}:\n`;
+          if (missingList.length) {
+            message += `  Missing: ${missingList.join(", ")}\n`;
+            allMissingFlat.push(...missingList);
+          }
+          if (duplicateList.length) {
+            // Distinct duplicate values, sorted
+            const uniqueDuplicates = [...new Set(duplicateList)].sort((a,b) => a-b);
+            message += `  Duplicates: ${uniqueDuplicates.map(x => "**" + x + "**").join(", ")}\n`;
+            allDuplicatesFlat.push(...uniqueDuplicates);
+          }
+          message += "\n";
         }
       }
 
-      if (allMissingFlat.length === 0) {
-        message += "No missing receipt numbers found.";
+      // Debug logs
+      console.log("All missing receipts:", allMissing);
+      console.log("All duplicate receipts:", allDuplicates);
+
+      if (allMissingFlat.length === 0 && allDuplicatesFlat.length === 0) {
+        message += "No missing or duplicate receipt numbers found.";
         sqlOutput.style.display = "none";
         sqlControls.style.display = "none";
         lastMissingArray = [];
+        lastDuplicateArray = [];
       } else {
-        const uniqueSorted = [...new Set(allMissingFlat)].sort((a, b) => a - b);
-        lastMissingArray = uniqueSorted;
+        // For SQL queries, only missing receipt numbers considered as before
+        const uniqueSortedMissing = [...new Set(allMissingFlat)].sort((a, b) => a - b);
+        lastMissingArray = uniqueSortedMissing;
+        lastDuplicateArray = [...new Set(allDuplicatesFlat)].sort((a,b) => a-b);
         displaySQL("SELECT", lastMissingArray);
         sqlControls.style.display = "flex";
       }
@@ -126,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const blob = new Blob([message], { type: "text/plain" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "missing_ORs_by_date.txt";
+        link.download = "missing_and_duplicate_ORs_by_date.txt";
         link.click();
       };
     }
@@ -175,6 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("sqlControls").style.display = "none";
     document.getElementById("downloadBtn").style.display = "none";
     lastMissingArray = [];
+    lastDuplicateArray = [];
   }
 
   // Drag & Drop support
